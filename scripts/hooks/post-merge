@@ -1,0 +1,14 @@
+#!/bin/bash
+# post-merge hook: re-install kilo-trading-skills skills into .kilo after pull
+# when the submodule has changed.
+
+set -e
+
+SUBMODULE_PATH="vendor/kilo-trading-skills"
+INSTALL_SCRIPT="$SUBMODULE_PATH/scripts/install_kilo_submodule.py"
+
+# Only run if the submodule pointer changed
+if git diff HEAD@{1} HEAD -- submodule 2>/dev/null | grep -q "$SUBMODULE_PATH"; then
+  echo "[post-merge] kilo-trading-skills submodule changed, reinstalling into .kilo..."
+  python3 "$INSTALL_SCRIPT" --source "$SUBMODULE_PATH" --dest .
+fi

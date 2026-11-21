@@ -2,6 +2,36 @@
 
 **Data handling:** [Privacy policy](docs/en/privacy.md) · [Security policy](SECURITY.md)
 
+## Reusing this project in another Kilo project
+
+To use all skills, workflows, skillsets, agents, and commands from this repository in another Kilo project, add this repo as a git submodule and run the install script.
+
+```bash
+# From the destination project
+git submodule add <url-of-this-repo> vendor/kilo-trading-skills
+python3 vendor/kilo-trading-skills/scripts/install_kilo_submodule.py \
+  --source vendor/kilo-trading-skills \
+  --dest .
+```
+
+Then reload Kilo Code (`/reload`) to detect the newly installed skills.
+
+**Options:**
+- `--merge` : add/update files without deleting existing `.kilo/` content (skills, workflows, skillsets, agents, commands, plans, kilo.jsonc). Safe if you already have a custom config.
+- Without `--merge` : existing directories and `kilo.jsonc` are replaced. A warning is shown and confirmation is required before proceeding.
+
+**Automatic updates after `git pull`:**
+Install the post-merge hook so the install runs automatically when the submodule pointer changes:
+
+```bash
+python3 vendor/kilo-trading-skills/scripts/install_kilo_submodule.py \
+  --source vendor/kilo-trading-skills \
+  --dest . \
+  --install-hook
+```
+
+---
+
 Kilo Trading Skills started as a personal project to use AI to improve my own trading process.
 
 Kilo Trading Skills is an Agent Skills-based trading workflow toolkit for time-constrained individual investors.
