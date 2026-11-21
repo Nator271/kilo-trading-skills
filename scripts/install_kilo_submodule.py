@@ -50,12 +50,24 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+EXCLUDED_DIR_NAMES = {"tests", "__pycache__", ".pytest_cache", ".venv"}
+EXCLUDED_FILE_NAMES = {".DS_Store"}
+EXCLUDED_SUFFIXES = {".pyc", ".pyo"}
+
+
 def copy_tree(src: Path, dst: Path, *, merge: bool = False) -> None:
-    """Copy src into dst. If merge, only add/update files, never delete."""
+    """Copy src into dst, excluding test/build artifacts.
+    If merge, only add/update files, never delete."""
     if not src.is_dir():
         return
     dst.mkdir(parents=True, exist_ok=True)
     for item in src.iterdir():
+        if item.is_dir() and item.name in EXCLUDED_DIR_NAMES:
+            continue
+        if item.is_file() and item.name in EXCLUDED_FILE_NAMES:
+            continue
+        if item.is_file() and item.suffix in EXCLUDED_SUFFIXES:
+            continue
         target = dst / item.name
         if item.is_dir():
             if merge and target.exists():
