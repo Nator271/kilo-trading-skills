@@ -6,7 +6,7 @@ workflow(s) that operationalize it. Skillsets are the "what to install for this
 goal" layer; workflows are the "what to run, in order" layer.
 
 These files are the **canonical** definition of skill bundles. If any prose
-elsewhere (`README.md`, `CLAUDE.md`, docs site) disagrees with a manifest here,
+elsewhere (`README.md`, `AGENTS.md`, docs site) disagrees with a manifest here,
 the YAML is correct.
 
 A skillset `id` is exactly a `skills-index.yaml` **category**, so the Trading

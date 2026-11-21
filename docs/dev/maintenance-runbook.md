@@ -11,14 +11,13 @@ blocks it); use `<repo>` / `$PROJECT_DIR` / `$HOME` placeholders.
 
 Related references (this runbook links rather than duplicates):
 
-- [`skill-automation.md`](skill-automation.md) ([日本語](skill-automation.ja.md))
+- [`skill-automation.md`](skill-automation.md)
   → maintainer quickstart, manual commands, scheduling, and the mode-by-mode
   side-effect boundary for the self-improvement and generation pipelines.
 - [`guided-market-regime-daily.md`](guided-market-regime-daily.md)
-  ([日本語](guided-market-regime-daily.ja.md)) → the guided fictional
-  market-regime run, its decision diff, current limits, and the maintainer
+  → the guided fictional market-regime run, its decision diff, current limits, and the maintainer
   measurement routine.
-- `CLAUDE.md` → *Pre-commit Hooks*, *Creating a New Skill*, *Creating
+- `AGENTS.md` → *Pre-commit Hooks*, *Creating a New Skill*, *Creating
   Documentation Site Pages*, *Skill Self-Improvement Loop*, and *Skill
   Auto-Generation Pipeline* implementation details and test commands.
 - `docs/README.md` → *Skill Doc Ownership* (the `generated:` marker), page
@@ -75,8 +74,8 @@ without writing.
 
 | Generator | Regenerate | Inputs → Outputs | pre-commit hook / CI step |
 |---|---|---|---|
-| `scripts/generate_catalog_from_index.py` | `python3 scripts/generate_catalog_from_index.py` | `skills-index.yaml` → catalog blocks in `README.md`, `README.ja.md`, `CLAUDE.md` (between `<!-- skills-index:* -->` sentinels) | `catalog-drift` / "README catalog drift check" |
-| `scripts/generate_skill_docs.py` | `python3 scripts/generate_skill_docs.py` (missing only) · `--skill <name>` · `--overwrite` (generator-owned only) · `--force` (override protection — never in CI) | `skills/*/SKILL.md` + `references/` + `scripts/*.py` + `CLAUDE.md` + `skill-packages/*.skill` → `docs/{en,ja}/skills/*.md` (+ index) | `skill-docs-drift` / "Skill docs drift check" |
+| `scripts/generate_catalog_from_index.py` | `python3 scripts/generate_catalog_from_index.py` | `skills-index.yaml` → catalog blocks in `README.md`, `AGENTS.md` (between `<!-- skills-index:* -->` sentinels) | `catalog-drift` / "README catalog drift check" |
+| `scripts/generate_skill_docs.py` | `python3 scripts/generate_skill_docs.py` (missing only) · `--skill <name>` · `--overwrite` (generator-owned only) · `--force` (override protection — never in CI) | `skills/*/SKILL.md` + `references/` + `scripts/*.py` + `AGENTS.md` + `skill-packages/*.skill` → `docs/{en,ja}/skills/*.md` (+ index) | `skill-docs-drift` / "Skill docs drift check" |
 | `scripts/generate_skillset_docs.py` | `python3 scripts/generate_skillset_docs.py` (`--lang en\|ja\|all`, default `all`) | `skillsets/*.yaml` → `docs/{en,ja}/skillsets.md` | `skillset-docs-drift` / "Skillset docs drift check" |
 | `scripts/generate_workflow_docs.py` | `python3 scripts/generate_workflow_docs.py` (`--lang en\|ja\|all`, default `all`) | `workflows/*.yaml` → `docs/{en,ja}/workflows.md`; JA requires complete `*_ja` prose and never falls back to EN | `workflow-docs-drift` / "Workflow docs drift check" |
 | `skills/trading-skills-navigator/scripts/build_snapshot.py` | `python3 skills/trading-skills-navigator/scripts/build_snapshot.py` | `skills-index.yaml` + `workflows/*.yaml` + `skillsets/*.yaml` → `skills/trading-skills-navigator/assets/metadata_snapshot.json` | `snapshot-check` / "Navigator snapshot drift check" |
@@ -113,7 +112,7 @@ contract: `docs/README.md` → *Skill Doc Ownership*.
 | `skills/<s>/SKILL.md` (or its `references/`, `scripts/`) | `generate_skill_docs.py --skill <s>` (only if its page is `generated: true`) | `generate_skill_docs.py --check`; `docs-completeness` |
 | `workflows/*.yaml` | `generate_workflow_docs.py`, `build_snapshot.py` | `validate_skills_index.py --strict-workflows` (including JA completeness); `workflow-docs-drift`, `snapshot-check` |
 | `skillsets/*.yaml` | `generate_skillset_docs.py`, `build_snapshot.py` | `validate_skillsets.py`; `skillset-docs-drift`, `snapshot-check` |
-| Added a **new skill** | follow `CLAUDE.md` → *Creating a New Skill* (mandatory checklist: docs, index entry, catalog, README, API matrix) | `validate_skills_index.py --strict-metadata` + `pre-commit run --all-files` |
+| Added a **new skill** | follow `AGENTS.md` → *Creating a New Skill* (mandatory checklist: docs, index entry, catalog, README, API matrix) | `validate_skills_index.py --strict-metadata` + `pre-commit run --all-files` |
 
 Fastest catch-all before pushing: `pre-commit run --all-files` (runs every
 drift `--check`) then `bash scripts/run_all_tests.sh`.
@@ -225,9 +224,9 @@ The installer does not automatically unload agents or overwrite customizations.
 
 For a concise explanation of what each mode reads and writes, including why
 `--dry-run` is not filesystem-read-only, see the
-[Skill Automation Quickstart](skill-automation.md) ([日本語](skill-automation.ja.md)).
+[Skill Automation Quickstart](skill-automation.md).
 Implementation architecture, quality-gate rollback, and tests remain in
-`CLAUDE.md` → *Skill Self-Improvement Loop* and *Skill Auto-Generation
+`AGENTS.md` → *Skill Self-Improvement Loop* and *Skill Auto-Generation
 Pipeline*. State / logs:
 
 - Improvement: `logs/.skill_improvement.lock`,

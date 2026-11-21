@@ -2,7 +2,7 @@
 
 Operational workflow manifests for the solo-trader OS. Each manifest names exactly one skill per step, declares decision gates, and documents the artifacts that flow between steps.
 
-These files are the **canonical** definition of multi-skill workflows. If any prose elsewhere (`README.md`, `CLAUDE.md`, blog posts, docs site) disagrees with a manifest in this directory, the YAML is correct.
+These files are the **canonical** definition of multi-skill workflows. If any prose elsewhere (`README.md`, `AGENTS.md`, blog posts, docs site) disagrees with a manifest in this directory, the YAML is correct.
 
 For the full schema, error codes, and validator rules, see [`docs/dev/metadata-and-workflow-schema.md`](../docs/dev/metadata-and-workflow-schema.md).
 

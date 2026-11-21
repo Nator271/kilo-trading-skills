@@ -1,6 +1,6 @@
 ---
 name: skill-integration-tester
-description: Validate multi-skill workflows defined in CLAUDE.md by checking skill existence, inter-skill data contracts (JSON schema compatibility), file naming conventions, and handoff integrity. Use when adding new workflows, modifying skill outputs, or verifying pipeline health before release.
+description: Validate multi-skill workflows defined in AGENTS.md by checking skill existence, inter-skill data contracts (JSON schema compatibility), file naming conventions, and handoff integrity. Use when adding new workflows, modifying skill outputs, or verifying pipeline health before release.
 requires_api_key: false
 ---
 
@@ -16,7 +16,7 @@ and report broken handoffs. Supports dry-run mode with synthetic fixtures.
 
 ## When to Use
 
-- After adding or modifying a multi-skill workflow in CLAUDE.md
+- After adding or modifying a multi-skill workflow in AGENTS.md
 - After changing a skill's output format (JSON schema, file naming)
 - Before releasing new skills to verify pipeline compatibility
 - When debugging broken handoffs between consecutive workflow steps
@@ -32,7 +32,7 @@ and report broken handoffs. Supports dry-run mode with synthetic fixtures.
 
 ### Step 1: Run Integration Validation
 
-Execute the validation script against the project's CLAUDE.md:
+Execute the validation script against the project's AGENTS.md:
 
 ```bash
 python3 skills/skill-integration-tester/scripts/validate_workflows.py \

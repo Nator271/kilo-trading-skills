@@ -11,7 +11,7 @@ permalink: /ja/skills/skill-integration-tester/
 # Skill Integration Tester
 {: .no_toc }
 
-CLAUDE.mdに定義されたマルチスキルワークフローを検証するスキルです。スキルの存在確認、スキル間データコントラクト（JSONスキーマ互換性）、ファイル命名規則、ハンドオフの整合性をチェックします。新しいワークフローの追加、スキル出力の変更、リリース前のパイプライン健全性の確認時に使用します。
+AGENTS.mdに定義されたマルチスキルワークフローを検証するスキルです。スキルの存在確認、スキル間データコントラクト（JSONスキーマ互換性）、ファイル命名規則、ハンドオフの整合性をチェックします。新しいワークフローの追加、スキル出力の変更、リリース前のパイプライン健全性の確認時に使用します。
 {: .fs-6 .fw-300 }
 
 <span class="badge badge-free">API不要</span>
@@ -30,13 +30,13 @@ CLAUDE.mdに定義されたマルチスキルワークフローを検証する�
 
 ## 1. 概要
 
-CLAUDE.mdに定義されたマルチスキルワークフロー（Daily Market Monitoring、Weekly Strategy Review、Earnings Momentum Tradingなど）を、各ステップを順次実行して検証します。ステップN出力とステップN+1入力間のJSONスキーマ互換性をチェックし、ファイル命名規則を検証し、壊れたハンドオフを報告します。合成フィクスチャを使用したドライランモードに対応しています。
+AGENTS.mdに定義されたマルチスキルワークフロー（Daily Market Monitoring、Weekly Strategy Review、Earnings Momentum Tradingなど）を、各ステップを順次実行して検証します。ステップN出力とステップN+1入力間のJSONスキーマ互換性をチェックし、ファイル命名規則を検証し、壊れたハンドオフを報告します。合成フィクスチャを使用したドライランモードに対応しています。
 
 ---
 
 ## 2. 使用タイミング
 
-- CLAUDE.mdにマルチスキルワークフローを追加・変更した後
+- AGENTS.mdにマルチスキルワークフローを追加・変更した後
 - スキルの出力フォーマット（JSONスキーマ、ファイル命名）を変更した後
 - 新しいスキルをリリースする前のパイプライン互換性確認
 - 連続するワークフローステップ間の壊れたハンドオフのデバッグ時
@@ -65,7 +65,7 @@ python3 skills/skill-integration-tester/scripts/validate_workflows.py \
 
 ### ステップ1: 統合バリデーションの実行
 
-プロジェクトのCLAUDE.mdに対してバリデーションスクリプトを実行：
+プロジェクトのAGENTS.mdに対してバリデーションスクリプトを実行：
 
 ```bash
 python3 skills/skill-integration-tester/scripts/validate_workflows.py \

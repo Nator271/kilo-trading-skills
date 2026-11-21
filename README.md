@@ -1,10 +1,10 @@
-# Claude Trading Skills
+# Kilo Trading Skills
 
 **Data handling:** [Privacy policy](docs/en/privacy.md) · [Security policy](SECURITY.md)
 
-Claude Trading Skills started as a personal project to use AI to improve my own trading process.
+Kilo Trading Skills started as a personal project to use AI to improve my own trading process.
 
-Claude Trading Skills is a Claude Skills-based trading workflow toolkit for time-constrained individual investors.
+Kilo Trading Skills is an Agent Skills-based trading workflow toolkit for time-constrained individual investors.
 
 It is designed for investors who use long-term investing, ETFs, and dividend stocks as their core, while using disciplined swing trading as a satellite strategy when market conditions are favorable.
 
@@ -17,8 +17,6 @@ The project follows a **first for self, open for others** stance: it is built fi
 📖 **Documentation site:** <https://tradermonty.github.io/claude-trading-skills/>
 
 **Project vision:** [`PROJECT_VISION.md`](PROJECT_VISION.md)
-
-日本語版READMEは[`README.ja.md`](README.ja.md)をご覧ください。
 
 ## Disclaimer
 
@@ -50,9 +48,9 @@ New users should start with one of these operational workflows. Each link points
 | Record and learn from every closed trade | [`trade-memory-loop`](workflows/trade-memory-loop.yaml) | trader-memory-core, signal-postmortem | No API for manual path |
 | Review monthly performance and adjust rules | [`monthly-performance-review`](workflows/monthly-performance-review.yaml) ([sample](examples/workflows/monthly-performance-review/sample-run/)) | trader-memory-core, signal-postmortem, backtest-expert | No API for manual path |
 
-See [`workflows/README.md`](workflows/README.md) for how to read a manifest and run it manually. For a one-page "which workflow fits my situation?" guide, see [Find Your Workflow](docs/en/find-your-workflow.md) ([日本語](docs/ja/find-your-workflow.md)).
+See [`workflows/README.md`](workflows/README.md) for how to read a manifest and run it manually. For a one-page "which workflow fits my situation?" guide, see [Find Your Workflow](docs/en/find-your-workflow.md).
 
-New here? Follow [Your First Week](docs/en/your-first-week.md) ([日本語](docs/ja/your-first-week.md)) from installation through a no-paid-data-API market check, first journal entry, and first weekly review.
+New here? Follow [Your First Week](docs/en/your-first-week.md) from installation through a no-paid-data-API market check, first journal entry, and first weekly review.
 
 ### See Example Outputs
 
@@ -76,16 +74,7 @@ Select a preview to open the full-size SVG; on a phone, zoom after opening.
 
 ### What This Actually Costs
 
-Claude Web Skills are currently available on Free, Pro, Max, Team, and
-Enterprise accounts; see Anthropic's
-[current Skills help](https://support.claude.com/en/articles/12512180-use-skills-in-claude)
-because access can change. Claude Code has separate account requirements, and
-the Claude.ai Free plan does not include it; see the
-[Claude Code setup guide](https://code.claude.com/docs/en/getting-started).
-FMP, FINVIZ Elite, and Alpaca are optional data or broker integrations for
-specific workflows. The five-skill starter path below works with public CSVs,
-chart screenshots, and local files, so it does not require a paid market-data
-API subscription.
+Kilo Web Skills are currently available on Free, Pro, Max, Team, and Enterprise accounts; see Kilo's current Skills help because access can change. Kilo Code has separate account requirements. FMP, FINVIZ Elite, and Alpaca are optional data or broker integrations for specific workflows. The five-skill starter path below works with public CSVs, chart screenshots, and local files, so it does not require a paid market-data API subscription.
 
 ### No API Key Starter Path
 
@@ -99,55 +88,49 @@ If you do not have FMP / FINVIZ / Alpaca subscriptions, start with these five sk
 
 This path lets you review market conditions, size trades, journal decisions, and review outcomes **without paid data APIs**. Note: "no API" does not mean "no external data" — these skills still need public CSVs, chart screenshots, or local files. See each skill's `integrations:` entry in [`skills-index.yaml`](skills-index.yaml) for exact input requirements.
 
-> **Canonical source:** [`skills-index.yaml`](skills-index.yaml) is the authoritative index of all skills. If this README, `CLAUDE.md`, or docs disagree with the index, the index is correct. The same applies to multi-skill workflows — [`workflows/*.yaml`](workflows/) is canonical.
+> **Canonical source:** [`skills-index.yaml`](skills-index.yaml) is the authoritative index of all skills. If this README, `AGENTS.md`, or docs disagree with the index, the index is correct. The same applies to multi-skill workflows — [`workflows/*.yaml`](workflows/) is canonical.
 
 ## Repository Layout
+
 - `skills/<skill-name>/` – Source folder for each trading skill. Contains `SKILL.md`, reference material, and any helper scripts.
 - `skills-index.yaml` – Canonical metadata index for every skill (id, category, integrations, workflows back-references).
 - `workflows/` – Operational workflow manifests for the Core + Satellite routines (canonical, validator-enforced via `--strict-workflows`).
-- `skill-packages/` – Pre-built `.skill` archives ready to upload to Claude's web app **Skills** tab.
+- `skill-packages/` – Pre-built `.skill` archives ready to upload to Kilo's web app **Skills** tab.
 - `docs/` – Documentation site content, generated skill pages, and `docs/dev/metadata-and-workflow-schema.md` (schema spec).
 - `scripts/` – Repository-level automation, including the schema validator and one-shot bootstrap helper.
 - `skillsets/` – Purpose-specific install bundles defining required / recommended / optional skills for major goals (6 skillsets shipped: market-regime, core-portfolio, dividend-income, swing-opportunity, trade-memory, strategy-research; consumed by the Navigator).
 
 ## Getting Started
 
-First time here? Read the [FAQ](docs/en/faq.md) for plan, cost, safety, and scope
-answers.
+First time here? Read the [FAQ](docs/en/faq.md) for plan, cost, safety, and scope answers.
 
 See the [Changelog](CHANGELOG.md) for changes and the [release compatibility and migration policy](docs/dev/release-compatibility.md) before updating an installed skill.
 
-### Use with Claude Web App
+### Use with Kilo Web Interface
+
 1. Open the [latest GitHub Release](https://github.com/tradermonty/claude-trading-skills/releases/latest) and download the `.skill` asset that matches the skill you want, plus `SHA256SUMS`. Verify its hash as described in the [release policy](docs/dev/release-compatibility.md). If the Releases page is empty, follow the source-folder installation path below or build a local package with `scripts/package_skills.py`.
 2. For an individual account, open **Settings > Capabilities** and enable **Code execution and file creation**. Team and Enterprise users may need an organization owner to enable Skills.
-3. Open **Customize > Skills**, upload the ZIP, confirm it appears in the list, and enable it if needed (see Anthropic's [current Skills help](https://support.claude.com/en/articles/12512180-use-skills-in-claude)).
+3. Open **Customize > Skills**, upload the ZIP, confirm it appears in the list, and enable it if needed (see Kilo's current Skills help).
 
-### Use with Claude Code (desktop or CLI)
+### Use with Kilo Code (desktop or CLI)
+
 1. Clone or download this repository.
-2. Copy the desired skill folder (e.g., `backtest-expert`) to `~/.claude/skills/` for personal use or `.claude/skills/` inside a project (see the [Claude Code setup guide](https://code.claude.com/docs/en/getting-started)).
-3. Claude Code detects changes in an existing skills directory. Restart it only if you created the top-level skills directory after the session started.
+2. Place the desired skill folder (e.g., `backtest-expert`) in `.kilo/skills/` or your configured `skills.paths` (see the [Kilo Code setup guide](https://kilo.ai/docs)).
+3. Run `/reload` or start a new session to detect the skill.
 
 > Tip: `.skill` packages are built from the source folders with tests and local build artifacts omitted. Edit a source folder if you want to customize a skill, then run `python3 scripts/package_skills.py --skill <skill-name>` before uploading to the web app.
 
 ## Supported platforms
 
-The shared project environment supports Python **3.11 to 3.13** on Linux, Windows, and macOS. Packaged standalone skills retain a Python **3.9** source floor. A root-project combination counts as
-*supported* only if it is exercised by the project's CI; other combinations in that range are
-best-effort and unverified. See [docs/dev/compatibility-matrix.md](docs/dev/compatibility-matrix.md)
-for the exact supported matrix and how it is enforced.
+The shared project environment supports Python **3.11 to 3.13** on Linux, Windows, and macOS. Packaged standalone skills retain a Python **3.9** source floor. A root-project combination counts as *supported* only if it is exercised by the project's CI; other combinations in that range are best-effort and unverified. See [docs/dev/compatibility-matrix.md](docs/dev/compatibility-matrix.md) for the exact supported matrix and how it is enforced.
 
 ## Companion Work Package
 
-Want a ready-to-run agent-style workflow? See the companion
-[Hermes Trading Research Agent Work Package](https://github.com/tradermonty/hermes-trading-research-agent-work-package).
+Want a ready-to-run agent-style workflow? See the companion [Hermes Trading Research Agent Work Package](https://github.com/tradermonty/hermes-trading-research-agent-work-package).
 
-It packages these skills into a Hermes profile with task-oriented slash-command routines such as
-`/pre-market-routine`, `/after-close-review`, `/trade-journal`, `/weekly-portfolio-review`, and
-`/monthly-performance-review`.
+It packages these skills into a Hermes profile with task-oriented slash-command routines such as `/pre-market-routine`, `/after-close-review`, `/trade-journal`, `/weekly-portfolio-review`, and `/monthly-performance-review`.
 
-This is a research, journaling, and risk-review assistant, **not** an automated trading system.
-It does **not** place orders, provide a signal service, or run hidden scheduled jobs;
-**human decision gates remain central**.
+This is a research, journaling, and risk-review assistant, **not** an automated trading system. It does **not** place orders, provide a signal service, or run hidden scheduled jobs; **human decision gates remain central**.
 
 ## Core Skill Areas
 
@@ -285,9 +268,9 @@ The detailed catalog below is **auto-generated** from `skills-index.yaml` by `sc
 | **Earnings Calendar** (`earnings-calendar`) | This skill retrieves upcoming earnings announcements for US stocks using the Financial Modeling Prep (FMP) API. | `fmp` **required** | standalone | production |
 | **Economic Calendar Fetcher** (`economic-calendar-fetcher`) | Fetch upcoming economic events and data releases using FMP API. | `fmp` **required** | standalone | production |
 | **FXMacroData Calendar** (`fxmacrodata-calendar`) | Fetch official-source macro release-calendar events using FXMacroData for trade planning and event-risk filters. | `fxmacrodata` optional | standalone | beta |
-| **Skill Designer** (`skill-designer`) | Design new Claude skills from structured idea specifications. | `local_calculation` — | internal_component | production |
-| **Skill Idea Miner** (`skill-idea-miner`) | Mine Claude Code session logs for skill idea candidates. | `local_calculation` — | internal_component | production |
-| **Skill Integration Tester** (`skill-integration-tester`) | Validate multi-skill workflows defined in CLAUDE.md by checking skill existence, inter-skill data contracts (JSON schema compatibility), file naming conventions, and handoff integrity. | `local_calculation` — | standalone | production |
+| **Skill Designer** (`skill-designer`) | Design new Agent skills from structured idea specifications. | `local_calculation` — | internal_component | production |
+| **Skill Idea Miner** (`skill-idea-miner`) | Mine Kilo Code session logs for skill idea candidates. | `local_calculation` — | internal_component | production |
+| **Skill Integration Tester** (`skill-integration-tester`) | Validate multi-skill workflows defined in AGENTS.md by checking skill existence, inter-skill data contracts (JSON schema compatibility), file naming conventions, and handoff integrity. | `local_calculation` — | standalone | production |
 | **Trading Skills Navigator** (`trading-skills-navigator`) | Recommend the right workflow, skillset, API profile, and setup path from a natural-language trading goal. | `local_calculation` — | standalone | production |
 <!-- skills-index:end name="catalog-en" -->
 
@@ -296,30 +279,35 @@ The detailed catalog below is **auto-generated** from `skills-index.yaml` by `sc
 The main Core + Satellite starting path is described above. The examples below show additional ways to compose skills, including advanced satellite and contributor workflows.
 
 ### Daily Market Monitoring
+
 1. Use **Economic Calendar Fetcher** to check today's high-impact events (FOMC, NFP, CPI releases)
 2. Use **Earnings Calendar** to identify major companies reporting today
 3. Use **Market News Analyst** to review overnight developments and their market impact
 4. Use **Breadth Chart Analyst** to assess overall market health and positioning
 
 ### Weekly Strategy Review
+
 1. Use **Sector Analyst** to fetch CSV data and identify rotation patterns (optionally provide charts)
 2. Use **Technical Analyst** on key indices and positions for trend confirmation
 3. Use **Market Environment Analysis** for comprehensive macro briefing
 4. Use **US Market Bubble Detector** to assess speculative excess and risk levels
 
 ### Individual Stock Research
+
 1. Use **US Stock Analysis** for comprehensive fundamental and technical review
 2. Use **Earnings Calendar** to check upcoming earnings dates
 3. Use **Market News Analyst** to review recent company-specific news and sector developments
 4. Use **Backtest Expert** to validate entry/exit strategies before position sizing
 
 ### Strategic Positioning
+
 1. Use **Stanley Druckenmiller Investment** for macro theme identification
 2. Use **Economic Calendar Fetcher** to time entries around major data releases
 3. Use **Breadth Chart Analyst** and **Technical Analyst** for confirmation signals
 4. Use **US Market Bubble Detector** for risk management and profit-taking guidance
 
 ### Earnings Momentum Trading
+
 1. Use **Earnings Trade Analyzer** to score recent earnings reactions (gap size, trend, volume, MA position)
 2. Use **PEAD Screener** (Mode B) with analyzer output to find PEAD setups (red candle pullbacks → breakout signals)
 3. Use **Technical Analyst** to confirm weekly chart patterns and support/resistance levels
@@ -327,6 +315,7 @@ The main Core + Satellite starting path is described above. The examples below s
 5. Monitor SIGNAL_READY stocks for breakout entries with defined stop-loss (red candle low) and 2R targets
 
 ### Income Portfolio Construction
+
 1. Use **Value Dividend Screener** to identify high-quality dividend stocks with sustainable yields
 2. Use **Dividend Growth Pullback Screener** to find growth-focused dividend stocks at attractive technical entry points
 3. Use **US Stock Analysis** for deep-dive fundamental analysis on top candidates
@@ -335,12 +324,14 @@ The main Core + Satellite starting path is described above. The examples below s
 6. Use **Backtest Expert** to validate dividend capture or growth strategies
 
 ### Kanchi Dividend Workflow (US Stocks)
+
 1. Use **Kanchi Dividend SOP** to run Kanchi's 5-step process and create buy plans with invalidation conditions
 2. Use **Kanchi Dividend Review Monitor** on a daily/weekly/quarterly cadence to generate `OK/WARN/REVIEW` queues
 3. Use **Kanchi Dividend US Tax Accounting** to align holdings with qualified-dividend assumptions and account location
 4. Feed `REVIEW` findings back into **Kanchi Dividend SOP** before adding to positions
 
 ### Options Strategy Development
+
 1. Use **Options Strategy Advisor** to simulate and compare options strategies using Black-Scholes pricing
 2. Use **Technical Analyst** to identify optimal entry timing and support/resistance levels
 3. Use **Earnings Calendar** to plan earnings-based options strategies
@@ -348,6 +339,7 @@ The main Core + Satellite starting path is described above. The examples below s
 5. Review Greeks and P/L scenarios to select optimal strategy (covered calls, spreads, straddles, etc.)
 
 ### Portfolio Review & Rebalancing
+
 1. Use **Portfolio Manager** to fetch current holdings via Alpaca MCP and analyze portfolio health
 2. Review asset allocation, sector diversification, and risk metrics (beta, volatility, concentration)
 3. Review position-level flags (HOLD/ADD/TRIM/SELL candidates) based on thesis validation
@@ -355,6 +347,7 @@ The main Core + Satellite starting path is described above. The examples below s
 5. Review a rebalancing plan and decide manually which actions, if any, to take
 
 ### Statistical Arbitrage Opportunities
+
 1. Use **Pair Trade Screener** to identify cointegrated stock pairs within sectors
 2. Analyze mean-reversion metrics (half-life, z-score) and hedge ratios
 3. Use **Technical Analyst** to confirm technical setups for both legs of the pair
@@ -371,7 +364,7 @@ The main Core + Satellite starting path is described above. The examples below s
   - No API key required — works offline on local markdown files.
 
 - **Skill Designer** (`skill-designer`)
-  - Generates Claude CLI prompts for designing new skills from structured idea specifications.
+  - Generates Kilo CLI prompts for designing new skills from structured idea specifications.
   - Embeds repository conventions (structure guide, quality checklist, SKILL.md template) into the prompt.
   - Lists existing skills to prevent duplication. Used by the skill auto-generation pipeline's daily flow.
   - No API key required.
@@ -385,17 +378,16 @@ The main Core + Satellite starting path is described above. The examples below s
   - No API key required.
 
 - **Skill Idea Miner** (`skill-idea-miner`)
-  - Mines Claude Code session logs for skill idea candidates, scores them for novelty/feasibility/trading value, and maintains a prioritized backlog.
+  - Mines Kilo Code session logs for skill idea candidates, scores them for novelty/feasibility/trading value, and maintains a prioritized backlog.
   - Used by the weekly skill auto-generation pipeline. Can also be run manually.
   - No API key required.
 
 ## Contributor Automation
 
-The self-improvement and skill-generation pipelines are maintainer workflows,
-not beginner trading steps. See the [Skill Automation Quickstart](docs/dev/skill-automation.md)
-([日本語](docs/dev/skill-automation.ja.md)) for behavior, side effects, manual commands, and macOS scheduling.
+The self-improvement and skill-generation pipelines are maintainer workflows, not beginner trading steps. See the [Skill Automation Quickstart](docs/dev/skill-automation.md) for behavior, side effects, manual commands, and macOS scheduling.
 
 ## Customization & Contribution
+
 - Update `SKILL.md` files to tweak trigger descriptions or capability notes; ensure the frontmatter name matches the folder name when zipping.
 - Extend reference documents or add scripts inside each skill folder to support new workflows.
 - When distributing updates, regenerate the matching `.skill` file in `skill-packages/` so web-app users get the latest version:
@@ -441,8 +433,9 @@ For each skill's FMP, FINVIZ Elite and Alpaca requirements, see the [API Require
   ```
 
 ## Support & Further Reading
-- Claude Skills launch overview: https://www.anthropic.com/news/skills
-- Claude Code Skills how-to: https://docs.claude.com/en/docs/claude-code/skills
+
+- Kilo Skills launch overview: https://kilo.ai/docs
+- Kilo Code Skills how-to: https://kilo.ai/docs
 - Financial Modeling Prep API: https://financialmodelingprep.com/developer/docs
 
 Questions or suggestions? Open an issue or include guidance alongside the relevant skill folder so future users know how to get the most from these trading assistants.

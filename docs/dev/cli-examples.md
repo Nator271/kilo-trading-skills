@@ -24,7 +24,7 @@ literal `SUBCOMMAND_TO_SCRIPT` launcher dispatch and explicit successful
 `--version` early-return branches. Placeholders may be argument values.
 
 Elsewhere, the full script-and-option gate is opt-in through an HTML `<!-- exec: ... -->`
-comment. In the three root command-reference files (`CLAUDE.md`, `README.md`,
+comment. In the three root command-reference files (`AGENTS.md`, `README.md`,
 and `README.ja.md`), `validate` also checks repository-relative Python script
 paths in unmarked fenced `bash`, `sh`, `shell`, and `console` examples. That path-only check does not run the
 examples or validate their options. A valid `skip` marker exempts its block.
@@ -47,7 +47,7 @@ every command a reader could extract from a document.
 
 By default `validate` / `execute` scan the following files:
 
-- `CLAUDE.md`
+- `AGENTS.md`
 - `README.md`
 - `README.ja.md`
 - every `skills/*/SKILL.md`
@@ -57,7 +57,7 @@ By default `validate` / `execute` scan the following files:
 Reference-only changes also trigger the pre-commit validation hook.
 
 The `EN/JA parity` rule applies only to the paired `README.md` / `README.ja.md`.
-`CLAUDE.md` and the `SKILL.md` pages are single-language and are not paired.
+`AGENTS.md` and the `SKILL.md` pages are single-language and are not paired.
 `--targets` accepts other paths and glob patterns (e.g. `docs/**/*.md`).
 
 ## Marker grammar
@@ -135,7 +135,7 @@ inputs and environment are suitable for the full gate.
 ## CI and pre-commit
 
 - Pre-commit hook `docs-cli-examples` runs `validate` on
-  `CLAUDE.md`, `README.md`, `README.ja.md`, `skills/*/SKILL.md` and the
+  `AGENTS.md`, `README.md`, `skills/*/SKILL.md` and the
   validator itself.
 - CI job `docs-cli-examples` runs both `validate` and `execute --ci`
   (`--ci` = only `offline ci` blocks, stdlib-only interpreter, temp cwd +

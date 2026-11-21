@@ -109,7 +109,7 @@ python scripts/run_market_regime_daily.py --run-dir reports/quickstart-demo --st
 これは**ローカルの引継ぎ用ファイル**です。実ジャーナルへの反映や `state/` の変更ではありません。
 statusは読取り専用で、既存レポートは同じ実行に紐づいたままです。
 
-`BLOCKED` が出たらディレクトリを保持し、[ランナーの詳細手順](https://github.com/tradermonty/claude-trading-skills/blob/main/docs/dev/guided-market-regime-daily.ja.md)
+`BLOCKED` が出たらディレクトリを保持し、[ランナーの詳細手順](https://github.com/tradermonty/claude-trading-skills/blob/main/docs/dev/guided-market-regime-daily.md)
 を確認します。manifestを書き換えて判断ゲートを回避しないでください。
 架空の結果を売買シグナルとして扱ったり、公開の問い合わせに個人の口座情報を添付したりしないでください。
 

@@ -189,8 +189,8 @@ This field is the back-reference. The forward reference (workflow → skill) is 
 
 1. **`display_name` is index-owned.** Validator does NOT cross-check it against `SKILL.md` frontmatter. Only `id` ↔ frontmatter `name` parity is enforced.
 2. **Deprecated skills stay in the index.** `status: deprecated` entries remain. They are excluded from `.skill` bundles and from any workflow's `required_skills`, but they remain queryable. Skills physically removed from `skills/` are also removed from the index.
-3. **`bootstrap_skills_index.py` is a one-time migration helper.** After PR1 merges, `skills-index.yaml` is the source of truth; do not re-run bootstrap as a sync tool. `CLAUDE.md` becomes a downstream consumer of the index.
-4. **No CLAUDE.md ↔ index parity check.** Once the index exists, the CLAUDE.md API matrix is informational. A future PR may regenerate the matrix from the index, but the index is canonical.
+3. **`bootstrap_skills_index.py` is a one-time migration helper.** After PR1 merges, `skills-index.yaml` is the source of truth; do not re-run bootstrap as a sync tool. `AGENTS.md` becomes a downstream consumer of the index.
+4. **No AGENTS.md ↔ index parity check.** Once the index exists, the AGENTS.md API matrix is informational. A future PR may regenerate the matrix from the index, but the index is canonical.
 
 ---
 

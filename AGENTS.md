@@ -1,10 +1,10 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Kilo Code (kilo.ai) when working with code in this repository.
 
 ## Repository Purpose
 
-This repository contains Claude Skills for equity investors and traders. Each skill packages domain-specific prompts, knowledge bases, and helper scripts to assist with market analysis, technical charting, economic calendar monitoring, and trading strategy development. Skills are designed to work in both Claude's web app and Claude Code environments.
+This repository contains Agent Skills for equity investors and traders. Each skill packages domain-specific prompts, knowledge bases, and helper scripts to assist with market analysis, technical charting, economic calendar monitoring, and trading strategy development. Skills are designed to work in both Kilo's web interface and Kilo Code environments.
 
 ⚠️ **Important:** Some skills require paid API subscriptions (FMP API and/or FINVIZ Elite) to function. See the [API Key Management](#api-key-management) section for detailed requirements by skill.
 
@@ -17,7 +17,7 @@ Each skill follows a standardized directory structure:
 ```
 <skill-name>/
 ├── SKILL.md              # Required: Skill definition with YAML frontmatter
-├── references/           # Knowledge bases loaded into Claude's context
+├── references/           # Knowledge bases loaded into the agent's context
 ├── scripts/             # Executable Python scripts (not auto-loaded)
 └── assets/              # Templates and resources for output generation
 ```
@@ -27,7 +27,7 @@ Each skill follows a standardized directory structure:
 - `name` must match the directory name for proper skill detection
 - Description defines when the skill should be triggered
 - Body contains workflow instructions written in imperative/infinitive form
-- All instructions assume Claude will execute them, not the user
+- All instructions assume the agent will execute them, not the user
 
 **Progressive Loading:**
 1. Metadata (YAML frontmatter) loads first for skill detection
@@ -39,12 +39,12 @@ Each skill follows a standardized directory structure:
 
 **Knowledge Base Organization:**
 - `references/` contains markdown files with domain knowledge (sector rotation patterns, technical analysis frameworks, news source credibility guides)
-- Knowledge bases provide context without requiring Claude to have specialized training
+- Knowledge bases provide context without requiring the agent to have specialized training
 - References are read selectively during skill execution to minimize token usage
 
 **Script vs. Reference Division:**
 - Scripts (`scripts/`) are executable code for API calls, data fetching, report generation
-- References (`references/`) are documentation for Claude to read and apply
+- References (`references/`) are documentation for the agent to read and apply
 - Scripts handle I/O; references handle knowledge
 
 **Output Generation:**
@@ -57,7 +57,7 @@ Each skill follows a standardized directory structure:
 
 ### Creating a New Skill
 
-Use the skill-creator plugin (available in Claude Code):
+Use the skill-creator plugin (available in Kilo Code):
 
 ```bash
 # This invokes the skill-creator to guide you through setup
@@ -134,21 +134,21 @@ See `docs/README.md` for frontmatter format, badge syntax, and complete checklis
 
 ### Packaging Skills for Distribution
 
-Skills are packaged as ZIP files for Claude web app users:
+Skills are packaged as ZIP files for Kilo web interface users:
 
 ```bash
 # Use the skill-creator's packaging script
-python3 ~/.claude/plugins/marketplaces/anthropic-agent-skills/skills/skill-creator/scripts/package_skill.py <skill-name>
+python3 ~/.kilo/plugins/marketplaces/anthropic-agent-skills/skills/skill-creator/scripts/package_skill.py <skill-name>
 ```
 
 The packaged .skill files are stored in `skill-packages/` and should be regenerated after any skill modifications.
 
 ### Testing Skills
 
-Skills are tested by invoking them in Claude Code conversations:
+Skills are tested by invoking them in Kilo Code conversations:
 
-1. Copy skill folder to Claude Code Skills directory
-2. Restart Claude Code to detect the skill
+1. Place skill folder in `.kilo/skills/` or configured `skills.paths`
+2. Run `/reload` or start new session
 3. Trigger the skill by providing input that matches the skill's description
 4. Verify that:
    - Skill loads correctly (check YAML frontmatter)
@@ -299,7 +299,7 @@ The table below is **auto-generated** from `skills-index.yaml` by `scripts/gener
 | **Trading Skills Navigator** | ❌ Not used | ❌ Not used | ❌ Not used | Reads local skills-index.yaml + workflows/*.yaml (or bundled snapshot); no network |
 | **US Market Bubble Detector** | ❌ Not used | ❌ Not used | ❌ Not used | User provides indicators |
 | **US Stock Analysis** | ❌ Not used | ❌ Not used | ❌ Not used | User provides the ticker or question, optionally own data; Current market data via web search |
-| **US Undervalued Growth Screener** | 🟡 Optional (Recommended) | ❌ Not used | ❌ Not used | Claude Code-native direct REST path using FMP_API_KEY. Bulk responses are cached and written to local artifacts; only compact screening results are returned to the model. Plan-gated bulk endpoints use bounded per-symbol fallbacks. |
+| **US Undervalued Growth Screener** | 🟡 Optional (Recommended) | ❌ Not used | ❌ Not used | Kilo Code-native direct REST path using FMP_API_KEY. Bulk responses are cached and written to local artifacts; only compact screening results are returned to the model. Plan-gated bulk endpoints use bounded per-symbol fallbacks. |
 | **Uptrend Analyzer** | ❌ Not used | ❌ Not used | ❌ Not used | Monty Uptrend Ratio Dashboard CSV; no API key required |
 | **VCP Screener** | ✅ Required | ❌ Not used | ❌ Not used | S&P 500 OHLCV via FMP |
 | **Value Dividend Screener** | ✅ Required | 🟡 Optional (Recommended) | ❌ Not used | Financial Modeling Prep API |
@@ -338,7 +338,7 @@ export ALPACA_API_KEY="your_api_key_id"
 export ALPACA_SECRET_KEY="your_secret_key"
 export ALPACA_PAPER="true"  # or "false" for live trading
 
-# Configure Alpaca MCP Server in Claude Code settings
+# Configure Alpaca MCP Server in Kilo Code settings
 # See portfolio-manager/references/alpaca-mcp-setup.md for detailed setup guide
 ```
 
@@ -512,7 +512,7 @@ python3 skills/theme-detector/scripts/theme_detector.py \
 # Test Alpaca connection
 python3 skills/portfolio-manager/scripts/check_alpaca_connection.py
 
-# Portfolio analysis is done via Claude with Alpaca MCP tools
+# Portfolio analysis is done via Kilo with Alpaca MCP tools
 # See portfolio-manager/references/alpaca-mcp-setup.md for setup
 ```
 
@@ -649,7 +649,7 @@ python3 skills/trader-memory-core/scripts/trader_memory_cli.py review \
 An automated pipeline reviews and improves skill quality on a daily cadence.
 
 **Architecture:**
-- `scripts/run_skill_improvement_loop.py` — orchestrator (round-robin selection, auto scoring, Claude CLI improvement, quality gate, PR creation)
+- `scripts/run_skill_improvement_loop.py` — orchestrator (round-robin selection, auto scoring, Kilo CLI improvement, quality gate, PR creation)
 - `skills/dual-axis-skill-reviewer/scripts/run_dual_axis_review.py` — scoring engine (5-category deterministic auto axis, optional LLM axis)
 - `scripts/run_skill_improvement.sh` — thin shell wrapper for launchd
 - `launchd/com.trade-analysis.skill-improvement.plist` — macOS launchd agent (daily 05:00)
@@ -725,7 +725,7 @@ An automated pipeline that mines session logs for skill ideas (weekly) and desig
 
 **Running manually:** Use the wrapper; it never evaluates primary `.envrc`. Supply
 GitHub/SSH credentials in the inherited operator or LaunchAgent environment. The
-dedicated generation clone defaults to `~/.local/share/claude-trading-skills-generation-bot`
+dedicated generation clone defaults to `~/.local/share/kilo-trading-skills-generation-bot`
 (`SKILL_GENERATION_CHECKOUT` override), separate from improvement. Dirty/off-main
 checkouts and unpublished commits are preserved and refused, never reset/cleaned.
 Shared logs/reports retain state in the primary repo. Daily/weekly use shared-state
@@ -920,8 +920,8 @@ Short-equity plans are not supported by trader-memory-core ingestion or accounti
 ### SKILL.md Writing Style
 
 - Use imperative/infinitive verb forms (e.g., "Analyze the chart", "Generate report")
-- Write instructions for Claude to execute, not user instructions
-- Avoid phrases like "You should..." or "Claude will..." - just state actions directly
+- Write instructions for the agent to execute, not user instructions
+- Avoid phrases like "You should..." or "The agent will..." - just state actions directly
 - Structure: Overview → When to Use → Workflow → Output Format → Resources
 
 ### Reference Document Patterns
@@ -960,19 +960,11 @@ This is a **public repository**. Never hardcode personal information:
 
 Files that contain secrets (`.mcp.json`, `.envrc`) must be listed in `.gitignore` and never committed.
 
-## Language Considerations
-
-- All SKILL.md files are in English
-- Analysis outputs are in English
-- Some reference materials (Stanley Druckenmiller Investment) include Japanese content
-- README files available in both English (README.md) and Japanese (README.ja.md)
-- User interactions may be in Japanese; analysis outputs remain in English
-
-## Distribution Workflow
+### Distribution Workflow
 
 When skills are ready for distribution:
 
-1. Test skill thoroughly in Claude Code
+1. Test skill thoroughly in Kilo Code
 2. Package skill with the repo packager, which excludes tests and local build artifacts:
    ```bash
    python3 scripts/package_skills.py --skill <skill-name>
@@ -984,7 +976,7 @@ When skills are ready for distribution:
    - Specify if APIs are required, optional, or not needed
 5. Commit changes with descriptive message
 
-ZIP packages allow Claude web app users to upload and use skills without cloning the repository.
+ZIP packages allow Kilo web interface users to upload and use skills without cloning the repository.
 
 Repository releases are tag-driven. Update `CHANGELOG.md` and the compatibility table, merge to `main`, then push a stable `vMAJOR.MINOR.PATCH` tag. The workflow marks `releases/latest` by SemVer order, so an older-line patch tag does not move it. See [docs/dev/release-compatibility.md](docs/dev/release-compatibility.md) for the procedure and the required tag ruleset.
 
@@ -1011,3 +1003,7 @@ must ship `skills/<id>/requirements.txt`:
 - Include setup instructions for both environment variables and command-line arguments
 - Provide links to API registration and pricing pages
 - Distinguish between required APIs (skill won't work without) and optional APIs (enhances performance)
+
+### Model Configuration
+
+Configure your model in `~/.config/kilo/kilo.jsonc` or via Kilo UI. No default model is set in the project config.

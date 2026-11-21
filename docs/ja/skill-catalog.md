@@ -239,7 +239,7 @@ permalink: /ja/skill-catalog/
 | **Dual Axis Skill Reviewer** | デュアルアクシス方式でスキル品質をレビュー。決定論的オートスコアリング + オプションLLMレビュー | <span class="badge badge-free">API不要</span> |
 | **Skill Designer** | 構造化されたアイデア仕様からClaudeスキルを設計。SKILL.md、references、scripts、testsを含む完全なスキルディレクトリを生成 | <span class="badge badge-free">API不要</span> |
 | **Skill Idea Miner** | Claude Codeセッションログからスキルアイデア候補を抽出・スコアリング・バックログ化 | <span class="badge badge-free">API不要</span> |
-| **Skill Integration Tester** | CLAUDE.mdで定義されたマルチスキルワークフローをスキル存在、データ契約互換性、ハンドオフ整合性の観点で検証 | <span class="badge badge-free">API不要</span> |
+| **Skill Integration Tester** | AGENTS.mdで定義されたマルチスキルワークフローをスキル存在、データ契約互換性、ハンドオフ整合性の観点で検証 | <span class="badge badge-free">API不要</span> |
 | **Trade Hypothesis Ideator** | マーケットデータ、トレードログ、ジャーナルから反証可能なトレード仮説を生成しランキング。strategy.yamlエクスポート対応 | <span class="badge badge-free">API不要</span> |
 | **[Stockbee Episodic Pivot Analyzer]({{ '/ja/skills/stockbee-episodic-pivot-analyzer/' | relative_url }})** | エピソディックピボット候補のカタリスト、価格、出来高、フォロースルーの根拠を分析 | <span class="badge badge-optional">FMP任意</span> |
 | **[Stockbee Setup Fluency Trainer]({{ '/ja/skills/stockbee-setup-fluency-trainer/' | relative_url }})** | ローカル事例からStockbeeセットアップ認識を反復練習し、必要に応じてFMPデータで補強 | <span class="badge badge-optional">FMP任意</span> |

@@ -1,7 +1,5 @@
 # Guided fictional market-regime run
 
-[日本語](guided-market-regime-daily.ja.md)
-
 `scripts/run_market_regime_daily.py` guides the `market-regime-daily` workflow
 through readiness, run-scoped artifact handoff, a human posture decision, and a
 local journal handoff. This is an offline learning path using the committed

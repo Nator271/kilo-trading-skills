@@ -1,0 +1,17 @@
+{
+  "snapshot": false,
+  "default_agent": "code",
+  "instructions": ["AGENTS.md"],
+  "skills": { "paths": ["./skills"] },
+  "permission": {
+    "bash": "allow",
+    "edit": "allow",
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "task": "allow",
+    "webfetch": "allow",
+    "websearch": "allow",
+    "skill": "allow"
+  }
+}

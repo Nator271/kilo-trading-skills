@@ -33,7 +33,7 @@ On an **honest gap** (`primary_workflow: null`, `skillset.manifest: null`,
 individual `suggested_skills` instead.
 
 Always tell the user which of those skills need a **paid API key** (check each
-skill's row in the repo's API Requirements matrix / `CLAUDE.md`). If the
+skill's row in the repo's API Requirements matrix / `AGENTS.md`). If the
 recommendation was made with `--no-api`, none of the required skills need paid
 keys by construction.
 
@@ -68,7 +68,7 @@ package.
    ln -sfn "$(pwd)/skills/<skill-name>" ~/.claude/skills/<skill-name>
    ```
 
-3. Set any required API keys as environment variables (see `CLAUDE.md` →
+   3. Set any required API keys as environment variables (see `AGENTS.md` →
    *API Key Management*), e.g.:
 
    ```bash

@@ -1,11 +1,9 @@
-# Claude Trading Skills Project Vision
+# Kilo Trading Skills Project Vision
 
 Version: 0.2
 Last updated: 2026-07-01
 
-Japanese version: [PROJECT_VISION.ja.md](PROJECT_VISION.ja.md)
-
-Claude Trading Skills is a Claude Skills-based trading process OS for time-constrained individual investors.
+Kilo Trading Skills is an Agent Skills-based trading process OS for time-constrained individual investors.
 
 It helps investors use long-term investing as their foundation, take disciplined swing-trading opportunities only when market conditions allow, and improve continuously through risk management, journaling, and review.
 
@@ -13,13 +11,13 @@ It helps investors use long-term investing as their foundation, take disciplined
 
 **Empower solo traders, growing together.**
 
-This project exists to help individual traders move beyond isolated discretionary decisions and build repeatable processes, explicit risk management, journaling, review, and continuous improvement loops with Claude Skills.
+This project exists to help individual traders move beyond isolated discretionary decisions and build repeatable processes, explicit risk management, journaling, review, and continuous improvement loops with Agent Skills.
 
 Here, **solo** does not mean isolated. The project is designed for traders who make their own decisions and take their own risk, while allowing workflows, reviews, and improvement practices to grow through shared practice.
 
 ## 2. Important Notice and Disclaimer
 
-This repository provides Claude Skills and related materials for educational, research, and process-improvement purposes. It does not provide financial advice, investment advisory services, trading signals, broker execution, tax advice, or legal advice.
+This repository provides Agent Skills and related materials for educational, research, and process-improvement purposes. It does not provide financial advice, investment advisory services, trading signals, broker execution, tax advice, or legal advice.
 
 Investing and trading involve risk, including loss of principal. Historical data, backtests, screening results, sample reports, and AI-generated analysis do not guarantee future results. All trading decisions, position sizing, risk management, tax/regulatory compliance, and broker usage decisions are solely the user's responsibility.
 
@@ -29,13 +27,13 @@ This project is provided under the MIT License. The software and materials are p
 
 This project started because the author wanted to use AI to improve his own trading process.
 
-For individual traders, especially those who invest and trade while also having work, family, or other life responsibilities, time, information overload, emotional control, and risk management are real constraints. Claude Trading Skills was created to make it easier to maintain a process for market review, candidate generation, trade planning, risk management, journaling, and review under those constraints.
+For individual traders, especially those who invest and trade while also having work, family, or other life responsibilities, time, information overload, emotional control, and risk management are real constraints. Kilo Trading Skills was created to make it easier to maintain a process for market review, candidate generation, trade planning, risk management, journaling, and review under those constraints.
 
 The project is first and foremost a practical tool that the author uses daily and weekly. It exists to improve the author's own trading process, build a more resilient decision process, and keep learning from records and reviews. At the same time, it is open source because the same workflows may be useful to other people facing similar constraints.
 
 The stance is **first for self, open for others**. The first user is the author. Even when outside feedback is limited, the project should keep improving as a tool the author actually uses. On top of that, the project aims to let workflows, reviews, and improvement practices accumulate as shared practical knowledge for individual traders.
 
-Claude Trading Skills does not provide a finished formula for winning. The author is also a trader still learning. This repository is not a place to hand out "answers." It is a place to share practical workflows that help individual traders strengthen their judgment, manage risk, learn from records, and improve gradually.
+Kilo Trading Skills does not provide a finished formula for winning. The author is also a trader still learning. This repository is not a place to hand out "answers." It is a place to share practical workflows that help individual traders strengthen their judgment, manage risk, learn from records, and improve gradually.
 
 ## 4. Core Thesis
 
@@ -55,11 +53,11 @@ The core loop is:
 Plan -> Trade -> Record -> Review -> Improve
 ```
 
-Claude Trading Skills is not a signal engine. It aims to be a **decision-process OS** that helps individual traders use AI to build a more resilient decision process while consistently managing judgment, risk, records, and improvement.
+Kilo Trading Skills is not a signal engine. It aims to be a **decision-process OS** that helps individual traders use AI to build a more resilient decision process while consistently managing judgment, risk, records, and improvement.
 
 ## 5. Purpose
 
-Claude Trading Skills is a repository of Claude Skills focused on US stocks, ETFs, dividend investing, swing trading, macro analysis, and strategy research, with options and event-driven strategies included where appropriate.
+Kilo Trading Skills is a repository of Agent Skills focused on US stocks, ETFs, dividend investing, swing trading, macro analysis, and strategy research, with options and event-driven strategies included where appropriate.
 
 The skills support decisions such as:
 
@@ -83,7 +81,7 @@ In particular, it aims to help individual investors who use long-term investing 
 | A decision-support system | Financial advice or investment advisory service |
 | A trading workflow toolkit | A buy/sell signal service |
 | A risk management and review framework | A profit guarantee system |
-| A Claude Skills repository | A broker execution platform |
+| An Agent Skills repository | A broker execution platform |
 | A system that supports the trader's learning loop | A fully automated trading bot |
 
 This project does not replace the trader's judgment. It helps make the trader's decision process explicit, repeatable, reviewable, and improvable.
@@ -232,7 +230,7 @@ Main tasks:
 
 Definition of done:
 
-- `PROJECT_VISION.md` and `PROJECT_VISION.ja.md` exist
+- `PROJECT_VISION.md` exists
 - `skills-index.yaml` or `skills-inventory.yaml` exists
 - All skills have initial classifications for category, use case, required API, difficulty, and timeframe
 - The API requirements matrix is current
@@ -240,7 +238,7 @@ Definition of done:
 
 ### Phase 1: Trading Skills Navigator v0 — ✅ v0 implemented (2026-05-17)
 
-> **Status:** `skills/trading-skills-navigator/` ships a deterministic recommender (`recommend.py`) that reads the repo-root SSoT and falls back to a bundled `metadata_snapshot.json` for the Claude Web App, plus manifest-driven setup. A 10-question recommendation regression suite already exists (`scripts/tests/test_recommend.py::CONTRACT`). Ongoing: UX polish, real-user smoke tests, and prompt examples.
+> **Status:** `skills/trading-skills-navigator/` ships a deterministic recommender (`recommend.py`) that reads the repo-root SSoT and falls back to a bundled `metadata_snapshot.json` for the Kilo Web App, plus manifest-driven setup. A 10-question recommendation regression suite already exists (`scripts/tests/test_recommend.py::CONTRACT`). Ongoing: UX polish, real-user smoke tests, and prompt examples.
 
 Create a meta-skill that acts as the guide for this repository.
 
@@ -265,7 +263,7 @@ Definition of done:
 - `skills/trading-skills-navigator/` exists
 - It can return a recommended skillset and workflow for 10 representative user questions
 - It can separate API-key and no-API paths
-- It can explain setup paths for Claude Web App and Claude Code
+- It can explain setup paths for Kilo Web App and Kilo Code
 
 ### Phase 2: Skillsets — ✅ partial: 6 skillsets implemented
 
@@ -334,7 +332,7 @@ Definition of done:
 
 ### Phase 4: User-Friendly Entry Points — ✅ partially complete (2026-05-24)
 
-> **Status:** README (EN/JA) has a Recommended Starting Path + No-API starter path keyed to the 5 workflows; generated workflow & skillset doc pages exist; the Navigator is the natural-language on-ramp; the dedicated [Find Your Workflow](docs/en/find-your-workflow.md) ([日本語](docs/ja/find-your-workflow.md)) on-ramp is now published (PR #142); and the [Hermes Trading Research Agent Work Package](https://github.com/tradermonty/hermes-trading-research-agent-work-package) companion is linked from the README (PR #140) as a ready-to-run agent-style usage path. Broader quickstart polish (starter prompts, API setup wizard, web UI) remains follow-up.
+> **Status:** README (EN) has a Recommended Starting Path + No-API starter path keyed to the 5 workflows; generated workflow & skillset doc pages exist; the Navigator is the natural-language on-ramp; the dedicated [Find Your Workflow](docs/en/find-your-workflow.md) on-ramp is now published (PR #142); and the [Hermes Trading Research Agent Work Package](https://github.com/tradermonty/hermes-trading-research-agent-work-package) companion is linked from the README (PR #140) as a ready-to-run agent-style usage path. Broader quickstart polish (starter prompts, API setup wizard, web UI) remains follow-up.
 
 Make the project easier for users who are not comfortable with GitHub or `.skill` files.
 
@@ -357,7 +355,7 @@ Definition of done:
 
 - A new user can choose a starting route within 5 minutes
 - No-API and FMP / Alpaca paths are clearly separated
-- A user can tell which `.skill` files to upload to Claude Web App
+- A user can tell which `.skill` files to upload to Kilo Web App
 - Starter prompts are available for first use
 
 ### Phase 5: Learning Loop — ✅ partially complete (2026-05-24)
@@ -439,7 +437,7 @@ Future development should follow these principles:
 
 Near-term work should proceed in this order:
 
-- ✅ **Done (2026-05-09)**: Project vision documents (`PROJECT_VISION.md` / `PROJECT_VISION.ja.md`)
+- ✅ **Done (2026-05-09)**: Project vision documents (`PROJECT_VISION.md`)
 - ✅ **Done (2026-05-09)**: `skills-index.yaml` SSoT + validator (PR #84)
 - ✅ **Done (2026-05-09)**: 5 core workflow manifests under `workflows/` (PR #85)
 - ✅ **Done (2026-05-09)**: Auto-generated workflow doc pages (PR #86)
@@ -448,7 +446,7 @@ Near-term work should proceed in this order:
 - **Partial**: Major skillsets in YAML — 6 skillsets shipped (`market-regime`, `core-portfolio`, `dividend-income`, `swing-opportunity`, `trade-memory`, `strategy-research`); `advanced-satellite` deferred and tracked in [#715](https://github.com/tradermonty/claude-trading-skills/issues/715)
 - ✅ **Done**: `dividend-income` skillset and `earnings-weekly` workflow shipped (the remaining scope of [#216](https://github.com/tradermonty/claude-trading-skills/issues/216))
 - **Next**: Short-side roadmap — the `advanced-satellite` skillset and the `risk-off-short-daily` workflow — tracked in [#715](https://github.com/tradermonty/claude-trading-skills/issues/715)
-- ✅ **Done (2026-05-24)**: Create "Find Your Workflow" documentation ([EN](docs/en/find-your-workflow.md) / [JA](docs/ja/find-your-workflow.md), PR #142)
+- ✅ **Done (2026-05-24)**: Create "Find Your Workflow" documentation ([EN](docs/en/find-your-workflow.md), PR #142)
 - ✅ **Done (2026-05-24)**: Public end-to-end sample operating examples — both `sample-run/` (required-only) and `sample-run-full-path/` (with optional step) under [`examples/workflows/`](examples/workflows/) for `market-regime-daily` and `trade-memory-loop` (PR #141; required-only path shipped earlier in PR #118)
 - ✅ **Done (2026-05-24)**: Companion work package — [Hermes Trading Research Agent](https://github.com/tradermonty/hermes-trading-research-agent-work-package) link added to README (PR #140)
 - **Later**: Add bundle builder or recommender CLI if needed

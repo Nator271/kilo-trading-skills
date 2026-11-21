@@ -5,6 +5,7 @@ description: >
   Collects related news via WebSearch and performs sector impact analysis
   (1st/2nd/3rd-order) and stock selection (positive/negative). Analyzes as a
   medium-to-long-term fund manager. Invoked by the scenario-analyzer skill.
+mode: subagent
 model: sonnet
 color: blue
 ---
