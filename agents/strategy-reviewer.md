@@ -7,7 +7,6 @@ description: >
   constructive feedback in English to improve the quality of the analysis.
   Invoked by the scenario-analyzer skill.
 mode: subagent
-model: sonnet
 color: orange
 ---
 
